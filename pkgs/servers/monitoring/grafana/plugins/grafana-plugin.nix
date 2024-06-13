@@ -1,10 +1,16 @@
 { stdenvNoCC, fetchurl, unzip, lib }:
 
-{ pname, version, zipHash, meta ? {}, passthru ? {}, ... }@args:
+{ pname, version, zipHash, meta ? {}, passthru ? {}, url ? "", ... }@args:
 let plat = stdenvNoCC.hostPlatform.system; in stdenvNoCC.mkDerivation ({
   inherit pname version;
 
-  src = if lib.isAttrs zipHash then
+  src = if url != "" then
+    fetchurl {
+      name = "${pname}-${version}.zip";
+      hash = zipHash;
+      inherit url;
+    }
+  else if lib.isAttrs zipHash then
     fetchurl {
       name = "${pname}-${version}-${plat}.zip";
       hash = zipHash.${plat} or (throw "Unsupported system: ${plat}");

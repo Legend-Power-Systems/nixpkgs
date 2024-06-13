@@ -7,6 +7,7 @@
   doitintl-bigquery-datasource = callPackage ./doitintl-bigquery-datasource { };
   grafadruid-druid-datasource = callPackage ./grafadruid-druid-datasource { };
   grafana-clickhouse-datasource = callPackage ./grafana-clickhouse-datasource { };
+  grafana-mongodb-community-plugin = callPackage ./grafana-mongodb-community-plugin { };
   grafana-clock-panel = callPackage ./grafana-clock-panel { };
   grafana-oncall-app = callPackage ./grafana-oncall-app { };
   grafana-piechart-panel = callPackage ./grafana-piechart-panel { };

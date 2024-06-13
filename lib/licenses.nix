@@ -610,6 +610,11 @@ in mkLicense lset) ({
     fullName = "Giftware License";
   };
 
+  grafanaEnterprisePlugin = {
+    fullName = "Grafana Enterprise Plugin License";
+    url = "https://grafana.com/legal/enterprise-plugins";
+  };
+
   hpnd = {
     spdxId = "HPND";
     fullName = "Historic Permission Notice and Disclaimer";
