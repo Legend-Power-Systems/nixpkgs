@@ -38,7 +38,19 @@ buildDotnetModule rec {
     keystone-src
   ];
 
-  sourceRoot = ".";
+  sourceRoot = "sources";
+
+  preUnpack = ''
+    mkdir sources
+  '';
+
+  postUnpack = ''
+    # Required for mv to work
+    chmod 755 -R CLPS2C-Compiler
+    chmod 755 -R keystone
+    mv CLPS2C-Compiler sources
+    mv keystone sources
+  '';
 
   patches = [
     ./patches/dont_trim_leading_newline.patch
